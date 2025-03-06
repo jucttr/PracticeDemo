@@ -69,16 +69,19 @@ class App {
 
 const app = new App();
 app.use(async (ctx, next) => {
+    ctx.a = 1;
     console.log('前序遍历1', 'ctx => ', ctx);
     await next();
     console.log('后续遍历1', 'ctx => ', ctx);
 });
 app.use(async (ctx, next) => {
+    ctx.b = 2;
     console.log('前序遍历2', 'ctx => ', ctx);
     await next();
     console.log('后续遍历2', 'ctx => ', ctx);
 });
 app.use(async (ctx, next) => {
+    ctx.c = 3;
     console.log('前序遍历3', 'ctx => ', ctx);
     await next();
     console.log('后续遍历3', 'ctx => ', ctx);
