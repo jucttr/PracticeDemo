@@ -1,0 +1,48 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            // function a() {
+            //     this.b = 3;
+            // }
+            // const c = new a();
+            // a();
+            // a.prototype.b = 5;
+            // console.log(c.b);
+            // console.log(a.b); // 静态属性（小心坑）
+            // console.log(window.b);
+
+            console.log('%c 普通对象', 'color: red');
+            const obj = {
+                a: 1,
+                b: 2,
+                c: 3,
+                d: function () {
+                    console.log(this.a);
+                },
+            };
+            console.log(obj.prototype); // undefined
+            console.log(obj.__proto__ === Object.prototype);
+
+            console.log('%c 构造函数', 'color: red');
+            function A() {
+                this.a = 1;
+                this.b = 2;
+                this.c = 3;
+                this.d = function () {
+                    console.log(this.a);
+                };
+            }
+            console.log(A.prototype);
+            console.log(A.__proto__ === Function.prototype);
+
+            const a = new A();
+            // console.log(a.__proto__);
+            console.log(a.__proto__ === A.prototype);
+        </script>
+    </body>
+</html>

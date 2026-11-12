@@ -1,4 +1,4 @@
-// 'use strict';
+'use strict';
 
 // function showName(str) {
 //     eval(str);
@@ -16,12 +16,12 @@
 //     console.log(x);
 // }
 // doSomething();
+
 // function changeName(person) {
 //     with (person) {
 //         name = 'BigBear';
 //     }
 // }
-
 // var me = {
 //     name: 'xiuyan',
 //     career: 'coder',
@@ -33,8 +33,12 @@
 // changeName(me);
 // changeName(you);
 // console.log(me, you);
+
 // let msg = 'hello world';
 // eval('console.log(msg);'); // hello world
+
+// eval("var msg = 'hello world';");
+// console.log(msg);
 
 // eval("let msg = 'hello world';");
 // console.log(msg); // Reference Error: msg is not defined

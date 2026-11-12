@@ -7,6 +7,7 @@
     </head>
     <body>
         <script>
+            'use strict';
             // 多次bind
             const obj = {
                 a: 1,
@@ -29,8 +30,14 @@
                 console.log(name);
                 console.log(age);
             }
+
             // const bindFn = func.bind(obj).bind(obj2).bind(obj3);
             // console.log(bindFn('jucttr', 18));
+
+            // const bindFn = func.bind(obj);
+            // const newBindFunc = new bindFn('jucttr', 18);
+            // console.log(newBindFunc);
+
             // MDN的实现方式
             Function.prototype.myBind = function (context) {
                 if (typeof this !== 'function') {
