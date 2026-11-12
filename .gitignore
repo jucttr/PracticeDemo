@@ -11,3 +11,7 @@ npm-debug.log*
 npm-error.log*
 
 .workbuddy
+.obsidian
+
+/*/test*
+/*/**/test
