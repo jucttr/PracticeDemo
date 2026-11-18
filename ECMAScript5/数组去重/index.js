@@ -24,6 +24,8 @@ const arr = [
     {},
     {},
 ];
+
+// ==================== 第一类：Set（ES6） ====================
 console.log(
     `<!-------------------------------- 第${++TITLECOUNT}个例子，利用ES6 Set去重（ES6中最常用） -------------------------------->`
 );
@@ -34,6 +36,11 @@ function unique(arr) {
  * {} 这种不能够去重，毕竟是不同的引用地址
  */
 // console.log(unique(arr)); // [1, "true", true, 15, false, undefined, null, NaN, "NaN", 0, "a", {}, {}]
+
+console.log(`<!-------------------------------- 第${++TITLECOUNT}个例子，展开运算符 + Set（简写） -------------------------------->`);
+console.log([...new Set(arr)]);
+
+// ==================== 第二类：遍历 + 结果集查找 ====================
 console.log(
     `<!-------------------------------- 第${++TITLECOUNT}个例子，利用indexOf去重 -------------------------------->`
 );
@@ -54,6 +61,42 @@ function unique2(arr) {
  * NaN、{}没有去重
  */
 // console.log(unique2(arr));
+
+console.log(
+    `<!-------------------------------- 第${++TITLECOUNT}个例子，includes + push返回新数组-------------------------------->`
+);
+function unique5(arr) {
+    if (!Array.isArray(arr)) {
+        console.log('type error!');
+        return;
+    }
+    var array = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (!array.includes(arr[i])) {
+            //includes 检测数组是否有某个值
+            array.push(arr[i]);
+        }
+    }
+    return array;
+}
+/**
+ * {}没有去重
+ */
+// console.log(unique5(arr));
+
+console.log(`<!-------------------------------- 第${++TITLECOUNT}个例子，reduce -------------------------------->`);
+function unique8(arr) {
+    return arr.reduce((prev, cur) => {
+        if (prev.includes(cur)) {
+            return prev;
+        } else {
+            return [...prev, cur];
+        }
+    }, []);
+}
+// console.log(unique8(arr));
+
+// ==================== 第三类：双重循环 + splice ====================
 console.log(
     `<!-------------------------------- 第${++TITLECOUNT}个例子，利用for嵌套for，然后splice去重（ES5中最常用） -------------------------------->`
 );
@@ -71,6 +114,7 @@ function unique3(arr) {
 }
 // console.log(unique3(arr)); // NaN和{}没有去重，两个null直接消失了
 
+// ==================== 第四类：对象属性名唯一（哈希） ====================
 console.log(
     `<!-------------------------------- 第${++TITLECOUNT}个例子，对象属性唯一特点去重 -------------------------------->`
 );
@@ -99,27 +143,6 @@ function unique4(arr) {
 // console.log(unique4(arr)); // [1, "true", 15, false, undefined, null, NaN, 0, "a", {…}]
 
 console.log(
-    `<!-------------------------------- 第${++TITLECOUNT}个例子，includes + push返回新数组-------------------------------->`
-);
-function unique5(arr) {
-    if (!Array.isArray(arr)) {
-        console.log('type error!');
-        return;
-    }
-    var array = [];
-    for (var i = 0; i < arr.length; i++) {
-        if (!array.includes(arr[i])) {
-            //includes 检测数组是否有某个值
-            array.push(arr[i]);
-        }
-    }
-    return array;
-}
-/**
- * {}没有去重
- */
-// console.log(unique5(arr));
-console.log(
     `<!-------------------------------- 第${++TITLECOUNT}个例子，哈希 + filter -------------------------------->`
 );
 function unique6(arr) {
@@ -138,6 +161,7 @@ function unique6(arr) {
 
 // console.log(unique6(arr));
 
+// ==================== 第五类：filter + 首次索引 ====================
 console.log(
     `<!-------------------------------- 第${++TITLECOUNT}个例子，filter + indexOf 索引比较  -------------------------------->`
 );
@@ -148,19 +172,3 @@ function unique7(arr) {
     });
 }
 // console.log(unique7(arr));
-
-console.log(`<!-------------------------------- 第${++TITLECOUNT}个例子，reduce -------------------------------->`);
-function unique8(arr) {
-    return arr.reduce((prev, cur) => {
-        if (prev.includes(cur)) {
-            return prev;
-        } else {
-            return [...prev, cur];
-        }
-    }, []);
-}
-// console.log(unique8(arr));
-
-console.log(`<!-------------------------------- 第${++TITLECOUNT}个例子，reduce -------------------------------->`);
-
-console.log([...new Set(arr)]);
